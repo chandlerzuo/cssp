@@ -16,7 +16,7 @@ CSSP framework incorporates the following steps:
 - Fitting the proposed local Poisson model for the bin-level sequencing data;
 - Calculating power at desired FDR and effect sizes.
 
-INSTALLATION
+Installation
 ------------
 CSSP is currently available in bioconductor. A stable version can be accessed through Bioconductor by:
 
@@ -28,7 +28,7 @@ References
 
 Zuo, C. and Keles, S., A Statistical Framework for Power Calculations in ChIP-Seq Experiments, Bioinformatics(2013) doi: 10.1093/bioinformatics/btt200
 
-ACKNOWLEDGEMENT
+Acknowledgement
 ---------------
 
 CSSP is developed by Keles Lab at University of Wisconsin Madison. 
