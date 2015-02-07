@@ -17,17 +17,20 @@ test_that( "Function cssp.fit: check the data.frame and BinData data formats are
 {
   ##Arrange
 
-  bindata.1 <- new( "BinData", tagCount = bindata.chr1[,2],
-                   input = bindata.chr1[,3],
-                   mappability = bindata.chr1[,4],
-                   gcContent = bindata.chr1[,5],
-                   coord = bindata.chr1[,1])
+  write.table(cbind("chr1",bindata.chr1[,c(1,4)]),file="allmap.txt",row.names=FALSE,col.names=FALSE,sep="\t")
+  write.table(cbind("chr1",bindata.chr1[,c(1,5)]),file="allgc.txt",row.names=FALSE,col.names=FALSE,sep="\t")
 
-  fit1 <- cssp.fit(bindata.1,seed=0)
-  fit2 <- cssp.fit(bindata.chr1,seed=0)
+  bindata.1 <- createBinData(tag2bin(tagdat_chip,binS=100,fragL=100),tag2bin(tagdat_input,binS=100,fragL=100),mfile="allmap.txt",gcfile="allgc.txt",nfile=NULL,chrlist="chr1")
+  ## Convert all data into bin data
+
+  fit1 <- cssp.fit(bindata.1)
+  fit2 <- cssp.fit(bindata.chr1)
 
   expect_equal(fit1@a,fit2@a)
   expect_equal(fit1@mu.input,fit2@mu.input)
+
+  file.remove("allmap.txt")
+  file.remove("allgc.txt")
   
 })
 
@@ -41,7 +44,7 @@ test_that( "Function cssp.fit: error messages for BinData " ,
   
   expect_error(cssp.fit(bindata1),"Error: mappability is missing")
 
-  ##Arrange
+    ##Arrange
 
   bindata1 <- new("BinData",coord=bin.data@coord,mappability=bin.data@mappability,tagCount=bin.data@tagCount,input=bin.data@input)
   
