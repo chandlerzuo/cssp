@@ -20,8 +20,8 @@ Installation
 ------------
 CSSP is currently available in bioconductor. A stable version can be accessed through Bioconductor by:
 
-     source( "http://cran.cnr.berkeley.edu" )
-     biocLite( "CSSP" )
+     source("http://cran.cnr.berkeley.edu")
+     biocLite("CSSP")
 
 References
 ----------
